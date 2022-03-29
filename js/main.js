@@ -70,7 +70,7 @@ function handleClickRestart (event) {
     balance.innerHTML= `${initialAmount}`;
     playBtn.classList.remove ('collapsed');
     restartBtn.classList.add('collapsed');
-    message.innerHTML = "Vamos a intentarlo de nuevo!";
+    message.innerHTML = "¡Vamos a intentarlo de nuevo!";
     
 }
 
