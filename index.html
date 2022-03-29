@@ -17,7 +17,9 @@
           id="betting_number"
           class="js_betting_number"
         >
-          <option disabled selected>Qué número apuestas del 1 al 6</option>
+          <option disabled selected value="0">
+            Qué número apuestas del 1 al 6
+          </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -33,9 +35,14 @@
           placeholder="¿Cuánto apuestas?"
         />
         <input type="submit" value="Jugar" class="js_play_btn" />
+        <input
+          type="submit"
+          value="Reiniciar juego"
+          class="collapsed js_restart_btn"
+        />
       </form>
       <h2 class="js_message">Vamos a jugar!</h2>
-      <p>Saldo: <span class="js_remaining_amount">50</span></p>
+      <p>Saldo: <span class="js_balance"></span></p>
     </main>
     <script src="./js/main.js"></script>
   </body>
