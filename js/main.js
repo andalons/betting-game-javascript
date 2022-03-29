@@ -27,13 +27,20 @@ function calculateRemainingAmount () {
     const bettingAmount = parseInt(document.querySelector('.js_betting_amount').value);
     console.log (bettingAmount);
     const remainingAmount = parseInt(document.querySelector('.js_remaining_amount').innerHTML);
+    let newRemainingAmount = 0;
     console.log (remainingAmount);
-     const numberMatch = compareNumbers();
+    const numberMatch = compareNumbers();
        if (numberMatch === true) {
-            remainingAmount.innerHTML = (remainingAmount - bettingAmount)*2;
+           console.log (bettingAmount);
+            newRemainingAmount = (remainingAmount - bettingAmount)*2;
+            return newRemainingAmount;
        } else {
-            remainingAmount.innerHTML = remainingAmount - bettingAmount*2;
-       }
+            newRemainingAmount = remainingAmount - bettingAmount*2;
+            return newRemainingAmount;
+       } 
+       remainingAmount.innerHTML = `${newRemainingAmount}`
+       
+      
     }
 /* function paintHtml(){
     const numberMatch = compareNumbers();
