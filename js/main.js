@@ -43,7 +43,7 @@ if (initialAmount <= 0){
     playBtn.classList.add ('collapsed');
     restartBtn.classList.remove('collapsed');
 }
-if (initialAmount >= 60) {
+if (initialAmount >= 200) {
     message.innerHTML = "¡HAS GANADO!"
     playBtn.classList.add ('collapsed');
     restartBtn.classList.remove('collapsed');
