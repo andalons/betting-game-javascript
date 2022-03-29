@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evaluación intermedia, Andrea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&family=Poppins:wght@400;600&family=Smokum&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <main class="main">
-      <h1>Dados y apuestas</h1>
-      <h2>Introduce aquí tu jugada</h2>
+      <h1 class="title">Dados y apuestas</h1>
+      <h2 class="subtitle">Introduce aquí tu jugada:</h2>
       <form action="" method="post">
         <select
           name="betting_number"
           id="betting_number"
-          class="js_betting_number"
+          class="input js_betting_number"
         >
           <option disabled selected value="0">
-            Qué número apuestas del 1 al 6
+            ¿Qué número apuestas del 1 al 6?
           </option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -31,18 +37,18 @@
           type="number"
           name="betting_amount"
           id="betting_amount"
-          class="js_betting_amount"
+          class="input js_betting_amount"
           placeholder="¿Cuánto apuestas?"
         />
-        <input type="submit" value="Jugar" class="js_play_btn" />
+        <input type="submit" value="Jugar" class="submit js_play_btn" />
         <input
           type="submit"
           value="Reiniciar juego"
-          class="collapsed js_restart_btn"
+          class="submit collapsed js_restart_btn"
         />
       </form>
-      <h2 class="js_message">Vamos a jugar!</h2>
-      <p>Saldo: <span class="js_balance"></span></p>
+      <h2 class="instructions_message js_message">¡Vamos a jugar!</h2>
+      <p class="balance">Saldo: <span class="js_balance"></span></p>
     </main>
     <script src="./js/main.js"></script>
   </body>
