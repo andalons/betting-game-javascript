@@ -6,7 +6,7 @@ const bettingAmount = document.querySelector('.js_betting_amount').value;
 const message = document.querySelector('.js_message');
 
 function getRandomNumber(max) {
-    console.log(Math.ceil(Math.random() * max)); //para comprobar qué número sale
+     //para comprobar qué número sale
     return Math.ceil(Math.random() * max);
     ;
   }
@@ -15,6 +15,7 @@ function compareNumbers(){
 const aleatNum = getRandomNumber(6);
 const bettingNum = parseInt(document.querySelector('.js_betting_number').value);
 console.log(bettingNum);
+console.log(aleatNum);
 if (aleatNum === bettingNum) {
     console.log("es truthy");
     return true; //no funciona
@@ -25,9 +26,10 @@ if (aleatNum === bettingNum) {
 }
 
 function calculateRemainingAmount () {
-  
-    const numberComparison = compareNumbers();
+  const numberComparison = compareNumbers();
     if (numberComparison === true) {
+        bettingAmount = bettingAmount*2; 
+    } else {
 
     }
 }
