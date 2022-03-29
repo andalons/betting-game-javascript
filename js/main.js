@@ -1,9 +1,7 @@
 "use strict";
-
 const playBtn = document.querySelector('.js_play_btn');
-const initialBettingAMount = 50;  
-const bettingAmount = document.querySelector('.js_betting_amount').value;
 const message = document.querySelector('.js_message');
+const remainingAmount = document.querySelector('.js_remaining_amount');
 
 function getRandomNumber(max) {
      //para comprobar qué número sale
@@ -17,34 +15,43 @@ const bettingNum = parseInt(document.querySelector('.js_betting_number').value);
 console.log(bettingNum);
 console.log(aleatNum);
 if (aleatNum === bettingNum) {
-    console.log("es truthy");
+    message.innerHTML = "Has ganado el doble de lo apostado";
     return true; //no funciona
 } else {
-    console.log("es falsy");
+    message.innerHTML = "Has perdido lo apostado";
     return false; //no funciona
 }
 }
 
 function calculateRemainingAmount () {
-  const numberComparison = compareNumbers();
-    if (numberComparison === true) {
-        bettingAmount = bettingAmount*2; 
-    } else {
-
+    const bettingAmount = parseInt(document.querySelector('.js_betting_amount').value);
+    console.log (bettingAmount);
+    const remainingAmount = parseInt(document.querySelector('.js_remaining_amount').innerHTML);
+    console.log (remainingAmount);
+     const numberMatch = compareNumbers();
+       if (numberMatch === true) {
+            remainingAmount.innerHTML = (remainingAmount - bettingAmount)*2;
+       } else {
+            remainingAmount.innerHTML = remainingAmount - bettingAmount*2;
+       }
     }
-}
-
-function paintHtml(){
-
-}
+/* function paintHtml(){
+    const numberMatch = compareNumbers();
+    if (numberMatch === true) {
+        message.innerHTML = "Has ganado el doble de lo apostado";
+    
+    } else { 
+        
+        
+    }
+} */
 
 
 function handleClick (event){
     event.preventDefault();
     compareNumbers (); 
+   /*  paintHtml ();  */ 
     calculateRemainingAmount ();
-    paintHtml ();  
-    
 }
 
 playBtn.addEventListener('click', handleClick);
