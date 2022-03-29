@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evaluación intermedia, Andrea</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="main">
+      <h1>Dados y apuestas</h1>
+      <h2>Introduce aquí tu jugada</h2>
+      <form action="" method="post">
+        <select
+          name="betting_number"
+          id="betting_number"
+          class="js_betting_number"
+        >
+          <option disabled selected>Qué número apuestas del 1 al 6</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <input
+          type="number"
+          name="betting_amount"
+          id="betting_amount"
+          class="js_betting_amount"
+          placeholder="¿Cuánto apuestas?"
+        />
+        <input type="submit" value="Jugar" class="js_play_btn" />
+      </form>
+      <h2>Vamos a jugar!</h2>
+      <p>Saldo: <span class="js_remaining_money">50</span></p>
+    </main>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
