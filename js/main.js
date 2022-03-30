@@ -3,8 +3,8 @@ const playBtn = document.querySelector('.js_play_btn');
 const restartBtn = document.querySelector('.js_restart_btn');
 const message = document.querySelector('.js_message');
 const balance = document.querySelector('.js_balance');
-let initialAmount = 50;
-balance.innerHTML= `${initialAmount}`;
+let balanceAmount = 50;
+balance.innerHTML= `${balanceAmount}`;
 
 
 function getRandomNumber(max) {
@@ -12,62 +12,73 @@ function getRandomNumber(max) {
     ;
   }
 
-function play(aleatNum, bettingNum){
-const bettingAmount = parseInt(document.querySelector('.js_betting_amount').value);
-console.log(aleatNum, bettingNum, bettingAmount, initialAmount);
-
-if (initialAmount < bettingAmount) {
-    message.innerHTML = "No dispones de tanto saldo... Reajusta tu apuesta!"
-    return initialAmount;
+function endGame (){
+    if (balanceAmount <= 0){
+        message.innerHTML = "¡HAS PERDIDO! ¿Quieres volver a intentarlo?";
+        playBtn.classList.add ('collapsed');
+        restartBtn.classList.remove('collapsed');
+    }
+    if (balanceAmount >= 200) {
+        message.innerHTML = "¡HAS GANADO! ¿Quieres volver a jugar?";
+        playBtn.classList.add ('collapsed');
+        restartBtn.classList.remove('collapsed');
+    }
 }
-if (bettingNum === 0) {
-    message.innerHTML = "No has elegido número... Reajusta tu apuesta!"
-    return initialAmount;
-}
 
-if (initialAmount > 0 && initialAmount < 200) {
 
-    console.log(initialAmount);
+function play(aleatNum, bettingNum, bettingAmount){
     if (aleatNum === bettingNum) {
         message.innerHTML = "Has ganado el doble de lo apostado";
-        initialAmount = initialAmount + (bettingAmount*2);
-        console.log(`ganas! ahora tienes ${initialAmount}`);
+        balanceAmount = balanceAmount + (bettingAmount*2);
+        console.log(`ganas! ahora tienes ${balanceAmount}`);
     } else {
         message.innerHTML = "Has perdido lo apostado";
-        initialAmount = initialAmount - bettingAmount;
-        console.log(`pierdes! ahora tienes ${initialAmount}`);
+        balanceAmount = balanceAmount - bettingAmount;
+        console.log(`pierdes! ahora tienes ${balanceAmount}`);
     }
-    balance.innerHTML= `${initialAmount}`;
+    balance.innerHTML= `${balanceAmount}`;
+    endGame();
 }
 
-if (initialAmount <= 0){
-    message.innerHTML = "¡HAS PERDIDO! ¿Quieres volver a intentarlo?"
-    playBtn.classList.add ('collapsed');
-    restartBtn.classList.remove('collapsed');
+
+function checkAmounts (aleatNum, bettingNum, bettingAmount) {
+    console.log(aleatNum, bettingNum, bettingAmount, balanceAmount);
+    if (balanceAmount < bettingAmount) {
+        message.innerHTML = "No dispones de tanto saldo... Reajusta tu apuesta!";
+        return false;
+    }
+    else if (bettingNum === 0) {
+        message.innerHTML = "No has elegido número... Reajusta tu apuesta!";
+        return false;
+    }
+    else if (bettingAmount === 0) {
+        message.innerHTML = "¿Cuánto quieres apostar?... Reajusta tu apuesta!";
+        return false;
+    }
+    else if (balanceAmount < 0 && balanceAmount > 200) {
+        return false;
+    } else {
+        return true;
+    }
 }
-if (initialAmount >= 200) {
-    message.innerHTML = "¡HAS GANADO! ¿Quieres volver a jugar?"
-    playBtn.classList.add ('collapsed');
-    restartBtn.classList.remove('collapsed');
-}
-return initialAmount;
-}
+
 
 
 function handleClickPlay (event){
     event.preventDefault();
     const aleatNum = getRandomNumber(6);
+    const bettingAmount = parseInt(document.querySelector('.js_betting_amount').value);
     const bettingNum = parseInt(document.querySelector('.js_betting_number').value);
-    initialAmount = play (aleatNum, bettingNum); 
-    
-   /*  paintHtml ();  */ 
-   /*  calculateAmounts (); */
+    const correctAmounts = checkAmounts(aleatNum, bettingNum, bettingAmount);
+    if (correctAmounts === true){
+    play (aleatNum, bettingNum, bettingAmount); 
+    }
 }
 
 function handleClickRestart (event) {
     event.preventDefault();
-    initialAmount = 50;
-    balance.innerHTML= `${initialAmount}`;
+    balanceAmount = 50;
+    balance.innerHTML= `${balanceAmount}`;
     playBtn.classList.remove ('collapsed');
     restartBtn.classList.add('collapsed');
     
