@@ -46,15 +46,15 @@ function checkAmounts(aleatNum, bettingNum, bettingAmount) {
   } else if (bettingNum === 0) {
     message.innerHTML = 'No has elegido número... Reajusta tu apuesta!';
     return false;
-  } else if (bettingAmount === 0) {
-    message.innerHTML = '¿Cuánto quieres apostar?... Reajusta tu apuesta!';
-    return false;
-  } else if (isNaN(bettingAmount)) {
+  } else if (
+    bettingAmount === 0 ||
+    isNaN(bettingAmount) ||
+    Math.sign(bettingAmount) === -1
+  ) {
     message.innerHTML = '¿Cuánto quieres apostar?... Reajusta tu apuesta!';
     return false;
   } else if (balanceAmount < 0 && balanceAmount > 200) {
     return false;
-    //faltaría que no acepte valores negativos. revisar esta condición
   } else {
     return true;
   }
