@@ -43,6 +43,7 @@ function play(aleatNum, bettingNum, bettingAmount){
 
 function checkAmounts (aleatNum, bettingNum, bettingAmount) {
     console.log(aleatNum, bettingNum, bettingAmount, balanceAmount);
+    
     if (balanceAmount < bettingAmount) {
         message.innerHTML = "No dispones de tanto saldo... Reajusta tu apuesta!";
         return false;
@@ -55,6 +56,7 @@ function checkAmounts (aleatNum, bettingNum, bettingAmount) {
         message.innerHTML = "¿Cuánto quieres apostar?... Reajusta tu apuesta!";
         return false;
     }
+    //todavía faltaría comprobar que el betting amount no esté vacío (NaN) --> NO SÉ HACERLO
     else if (balanceAmount < 0 && balanceAmount > 200) {
         return false;
     } else {
